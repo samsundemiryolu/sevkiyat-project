@@ -1,21 +1,18 @@
 const path = require('path');
-const isLocal = process.env.NODE_ENV !== "production";
 
-const dataDirectory = isLocal
-  ? "C:/projeler/sevkiyat-data"
-  : path.join(__dirname, "data"); // Railway için uygun
+const dataDirectory = path.join(__dirname, "data"); // HER ZAMAN bu olacak
 
 module.exports = {
-  baseUrl: isLocal
+  baseUrl: process.env.NODE_ENV !== "production"
     ? "http://localhost:3000"
     : "https://sevkiyat-project.up.railway.app",
   dataPath: dataDirectory,
   paths: {
-    ships: path.join(dataDirectory, "ships.json"),
-    firms: path.join(dataDirectory, "firms.json"),
-    checklists: path.join(dataDirectory, "checklists.json"),
-    shipment: path.join(dataDirectory, "shipment.json"),
-    vehicles: path.join(dataDirectory, "vehicles.json"),
-    erbosan: path.join(dataDirectory, "erbosan.json"),
+    ships:     path.join(dataDirectory, "ships.json"),
+    firms:     path.join(dataDirectory, "firms.json"),
+    checklists:path.join(dataDirectory, "checklists.json"),
+    shipment:  path.join(dataDirectory, "shipment.json"),
+    vehicles:  path.join(dataDirectory, "vehicles.json"),
+    erbosan:   path.join(dataDirectory, "erbosan.json"),
   }
 };
