@@ -1,533 +1,509 @@
 [
   {
-    "id": 1744896969808,
-    "ship": "MV SAMSUN",
-    "ozetbeyanNo": "IM25789456",
-    "firma": "ERBOSAN",
-    "altBirim": "ÜRETİM",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753302541-7"
+    "id": "1748376073421",
+    "timestamp": "2025-05-27T20:01:13.421Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753302541-7",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
+      "adet": "3",
+      "net": "21,300",
+      "brut": "21,540"
     },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
+    "paketler": [
+      {
+        "parti": "8221825-1",
+        "ebat": "0,65 x 1450",
+        "net": 7.04,
+        "brut": 7.12
+      },
+      {
+        "parti": "8221825-3",
+        "ebat": "0,65 x 1450",
+        "net": 7.23,
+        "brut": 7.31
+      },
+      {
+        "parti": "8221825-2",
+        "ebat": "0,65 x 1450",
+        "net": 7.03,
+        "brut": 7.11
+      }
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:01:13.421Z",
+      "cikisTarihi": "2025-05-27T20:01:13.421Z"
     },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "",
-      "tevkifat": "",
-      "karayoluNavlun": "",
-      "karayoluFatura": "",
-      "karayoluKontrol": ""
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:01:13.421Z"
+    }
+  },
+  {
+    "id": "1748376273965",
+    "timestamp": "2025-05-27T20:04:33.965Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753301330-6",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
+      "adet": "3",
+      "net": "17,940",
+      "brut": "18,150"
     },
-    "vagonFatura": {
-      "tcddFiyat": "",
-      "kiymetPrimi": "",
-      "tcddNavlun": "",
-      "tcddFaturaTutari": "",
-      "tcddFaturaKontrol": ""
+    "paketler": [
+      {
+        "parti": "7220505-10",
+        "ebat": "0,75 x 1420",
+        "net": 6.57,
+        "brut": 6.65
+      },
+      {
+        "parti": "7215589-4",
+        "ebat": "1,50 x 1030",
+        "net": 5.26,
+        "brut": 5.32
+      },
+      {
+        "parti": "8243638-4",
+        "ebat": "0,50 x 1069",
+        "net": 6.11,
+        "brut": 6.18
+      }
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:04:33.965Z",
+      "cikisTarihi": "2025-05-27T20:04:33.965Z"
     },
-    "toplamlar": {
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:04:33.965Z"
+    }
+  },
+  {
+    "id": "1748376448363",
+    "timestamp": "2025-05-27T20:07:28.363Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753300009-7",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
       "adet": "2",
-      "net": "31,720",
-      "brut": "31,740"
+      "net": "14,240",
+      "brut": "14,400"
     },
-    "entries": [
+    "paketler": [
       {
-        "parti": "7097-1",
-        "ebat": "5,00 x 1500",
-        "net": 14.93,
-        "brut": 14.94
+        "parti": "8110627-2",
+        "ebat": "0,50 x 1110",
+        "net": 6.61,
+        "brut": 6.69
       },
       {
-        "parti": "7102-1",
-        "ebat": "5,00 x 1500",
-        "net": 16.79,
-        "brut": 16.8
+        "parti": "8102116-4",
+        "ebat": "0,50 x 1176",
+        "net": 7.63,
+        "brut": 7.71
       }
-    ]
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:07:28.362Z",
+      "cikisTarihi": "2025-05-27T20:07:28.362Z"
+    },
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:07:28.362Z"
+    }
   },
   {
-    "id": 1744897392202,
-    "ship": "MV SAMSUN",
-    "ozetbeyanNo": "IM25789456",
-    "firma": "ERBOSAN",
-    "altBirim": "ÜRETİM",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753301330-6"
-    },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "",
-      "tevkifat": "",
-      "karayoluNavlun": "",
-      "karayoluFatura": "",
-      "karayoluKontrol": ""
-    },
-    "vagonFatura": {
-      "tcddFiyat": "",
-      "kiymetPrimi": "",
-      "tcddNavlun": "",
-      "tcddFaturaTutari": "",
-      "tcddFaturaKontrol": ""
-    },
-    "toplamlar": {
+    "id": "1748377264005",
+    "timestamp": "2025-05-27T20:21:04.005Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753300900-7",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
       "adet": "2",
-      "net": "30,540",
-      "brut": "30,560"
+      "net": "10,270",
+      "brut": "10,410"
     },
-    "entries": [
+    "paketler": [
       {
-        "parti": "8456-1",
-        "ebat": "3,00 x 1500",
-        "net": 15.3,
-        "brut": 15.31
+        "parti": "8102116-3",
+        "ebat": "0,50 x 1176",
+        "net": 7.67,
+        "brut": 7.75
       },
       {
-        "parti": "7235-1",
-        "ebat": "4,00 x 1500",
-        "net": 15.24,
-        "brut": 15.25
+        "parti": "8102228-5",
+        "ebat": "0,50 x 1176",
+        "net": 2.6,
+        "brut": 2.66
       }
-    ]
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:21:04.004Z",
+      "cikisTarihi": "2025-05-27T20:21:04.004Z"
+    },
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:21:04.004Z"
+    }
   },
   {
-    "id": 1744900789815,
-    "ship": "MV SAMSUN",
-    "ozetbeyanNo": "IM25789456",
-    "firma": "ERBOSAN",
-    "altBirim": "ALIMSATIM",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Sgss",
-      "numarasi": "31754568002-5"
-    },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "",
-      "tevkifat": "",
-      "karayoluNavlun": "",
-      "karayoluFatura": "",
-      "karayoluKontrol": ""
-    },
-    "vagonFatura": {
-      "tcddFiyat": "",
-      "kiymetPrimi": "",
-      "tcddNavlun": "",
-      "tcddFaturaTutari": "",
-      "tcddFaturaKontrol": ""
-    },
-    "toplamlar": {
-      "adet": "3",
-      "net": "18,070",
-      "brut": "18,280"
-    },
-    "entries": [
-      {
-        "parti": "8207538-2",
-        "ebat": "0,65 x 1250",
-        "net": 6,
-        "brut": 6.07
-      },
-      {
-        "parti": "8207538-3",
-        "ebat": "0,65 x 1250",
-        "net": 6.12,
-        "brut": 6.19
-      },
-      {
-        "parti": "8207538-4",
-        "ebat": "0,65 x 1250",
-        "net": 5.95,
-        "brut": 6.02
-      }
-    ]
-  },
-  {
-    "id": 1744901402872,
-    "ship": "MV ATAK",
-    "ozetbeyanNo": "IM252358",
-    "firma": "İNNOVA",
-    "altBirim": "ABİNNOVA",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753301569-9"
-    },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "0,00 ₺",
-      "tevkifat": "0,00 ₺",
-      "karayoluNavlun": "0,00 ₺",
-      "karayoluFatura": "",
-      "karayoluKontrol": "0,00 ₺"
-    },
-    "vagonFatura": {
-      "tcddFiyat": "600,00 ₺",
-      "kiymetPrimi": "250,00 ₺",
-      "tcddNavlun": "26.350,00 ₺",
-      "tcddFaturaTutari": "27.000,00 ₺",
-      "tcddFaturaKontrol": "-26.323,00 ₺"
-    },
-    "toplamlar": {
+    "id": "1748377291851",
+    "timestamp": "2025-05-27T20:21:31.851Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753302584-7",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
       "adet": "2",
-      "net": "43,480",
-      "brut": "43,500"
+      "net": "12,900",
+      "brut": "13,040"
     },
-    "entries": [
+    "paketler": [
       {
-        "parti": "78714-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.64,
-        "brut": 21.65
+        "parti": "8104834-1",
+        "ebat": "0,50 x 1210",
+        "net": 7.54,
+        "brut": 7.61
       },
       {
-        "parti": "75780-1",
-        "ebat": "3,70 x 1375",
-        "net": 21.84,
-        "brut": 21.85
+        "parti": "8243163-2",
+        "ebat": "0,50 x 1225",
+        "net": 5.36,
+        "brut": 5.43
       }
-    ]
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:21:31.850Z",
+      "cikisTarihi": "2025-05-27T20:21:31.850Z"
+    },
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:21:31.850Z"
+    }
   },
   {
-    "id": 1744901646550,
-    "ship": "MV ATAK",
-    "ozetbeyanNo": "IM252358",
-    "firma": "İNNOVA",
-    "altBirim": "ABİNNOVA",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753302541-7"
+    "id": "1748377370683",
+    "timestamp": "2025-05-27T20:22:50.683Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753301224-1",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
+      "adet": "2",
+      "net": "10,850",
+      "brut": "10,990"
     },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "",
-      "tevkifat": "",
-      "karayoluNavlun": "",
-      "karayoluFatura": "",
-      "karayoluKontrol": ""
-    },
-    "vagonFatura": {
-      "tcddFiyat": "",
-      "kiymetPrimi": "",
-      "tcddNavlun": "",
-      "tcddFaturaTutari": "",
-      "tcddFaturaKontrol": ""
-    },
-    "toplamlar": {
-      "adet": "3",
-      "net": "64,470",
-      "brut": "64,500"
-    },
-    "entries": [
+    "paketler": [
       {
-        "parti": "78715-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.51,
-        "brut": 21.52
+        "parti": "8243163-4",
+        "ebat": "0,50 x 1225",
+        "net": 5.45,
+        "brut": 5.52
       },
       {
-        "parti": "79063-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.48,
-        "brut": 21.49
-      },
-      {
-        "parti": "79065-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.48,
-        "brut": 21.49
+        "parti": "8106018-2",
+        "ebat": "0,50 x 1225",
+        "net": 5.4,
+        "brut": 5.47
       }
-    ]
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:22:50.683Z",
+      "cikisTarihi": "2025-05-27T20:22:50.683Z"
+    },
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:22:50.683Z"
+    }
   },
   {
-    "id": 1744901822491,
-    "ship": "MV ATAK",
-    "ozetbeyanNo": "IM252358",
-    "firma": "İNNOVA",
-    "altBirim": "ABİNNOVA",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753300001-4"
+    "id": "1748377564101",
+    "timestamp": "2025-05-27T20:26:04.101Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753300001-4",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
+      "adet": "2",
+      "net": "10,580",
+      "brut": "10,720"
     },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "0,00 ₺",
-      "tevkifat": "0,00 ₺",
-      "karayoluNavlun": "0,00 ₺",
-      "karayoluFatura": "",
-      "karayoluKontrol": "0,00 ₺"
-    },
-    "vagonFatura": {
-      "tcddFiyat": "600,00 ₺",
-      "kiymetPrimi": "250,00 ₺",
-      "tcddNavlun": "38.956,00 ₺",
-      "tcddFaturaTutari": "39.000,00 ₺",
-      "tcddFaturaKontrol": "-38.917,00 ₺"
-    },
-    "toplamlar": {
-      "adet": "3",
-      "net": "64,480",
-      "brut": "64,510"
-    },
-    "entries": [
+    "paketler": [
       {
-        "parti": "79062-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.48,
-        "brut": 21.49
+        "parti": "8106018-1",
+        "ebat": "0,50 x 1225",
+        "net": 5.25,
+        "brut": 5.32
       },
       {
-        "parti": "79064-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.5,
-        "brut": 21.51
-      },
-      {
-        "parti": "79281-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.5,
-        "brut": 21.51
+        "parti": "8243162-2",
+        "ebat": "0,50 x 1225",
+        "net": 5.33,
+        "brut": 5.4
       }
-    ]
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:26:04.101Z",
+      "cikisTarihi": "2025-05-27T20:26:04.101Z"
+    },
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:26:04.101Z"
+    }
   },
   {
-    "id": 1744901990572,
-    "ship": "MV ATAK",
-    "ozetbeyanNo": "IM252358",
-    "firma": "İNNOVA",
-    "altBirim": "ABİNNOVA",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753301224-1"
+    "id": "1748377876493",
+    "timestamp": "2025-05-27T20:31:16.493Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753300002-2",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
+      "adet": "2",
+      "net": "10,780",
+      "brut": "10,930"
     },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "",
-      "tevkifat": "",
-      "karayoluNavlun": "",
-      "karayoluFatura": "",
-      "karayoluKontrol": ""
-    },
-    "vagonFatura": {
-      "tcddFiyat": "",
-      "kiymetPrimi": "",
-      "tcddNavlun": "",
-      "tcddFaturaTutari": "",
-      "tcddFaturaKontrol": ""
-    },
-    "toplamlar": {
-      "adet": "3",
-      "net": "64,670",
-      "brut": "64,700"
-    },
-    "entries": [
+    "paketler": [
       {
-        "parti": "79282-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.52,
-        "brut": 21.53
+        "parti": "8243163-1",
+        "ebat": "0,50 x 1225",
+        "net": 5.15,
+        "brut": 5.22
       },
       {
-        "parti": "78760-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.55,
-        "brut": 21.56
-      },
-      {
-        "parti": "78759-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.6,
-        "brut": 21.61
+        "parti": "2100139-6",
+        "ebat": "0,50 x 1230",
+        "net": 5.63,
+        "brut": 5.71
       }
-    ]
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:31:16.493Z",
+      "cikisTarihi": "2025-05-27T20:31:16.493Z"
+    },
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:31:16.493Z"
+    }
   },
   {
-    "id": 1744902055348,
-    "ship": "MV ATAK",
-    "ozetbeyanNo": "IM252358",
-    "firma": "İNNOVA",
-    "altBirim": "ABİNNOVA",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753300002-2"
+    "id": "1748378526935",
+    "timestamp": "2025-05-27T20:42:06.935Z",
+    "shipId": "25IM2344",
+    "firmaId": "1",
+    "subUnit": "ÜRETİM",
+    "aracCinsi": "VAGON",
+    "aracNo": "21753300003-0",
+    "aracTipi": "Ks",
+    "ortak": false,
+    "surucu": "",
+    "iletisim": "",
+    "tasiyiciFirma": "",
+    "kantar": "",
+    "karayoluFiyat": "",
+    "kdvOran": "",
+    "karayoluKdv": "",
+    "tevkifat": "",
+    "karayoluNavlun": "",
+    "karayoluFatura": "",
+    "karayoluKontrol": "",
+    "tcddFiyat": "",
+    "kiymetPrimi": "",
+    "tcddNavlun": "",
+    "tcddFatura": "",
+    "tcddKontrol": "",
+    "totals": {
+      "adet": "2",
+      "net": "16,510",
+      "brut": "16,680"
     },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "0,00 ₺",
-      "tevkifat": "0,00 ₺",
-      "karayoluNavlun": "0,00 ₺",
-      "karayoluFatura": "",
-      "karayoluKontrol": "0,00 ₺"
-    },
-    "vagonFatura": {
-      "tcddFiyat": "600,00 ₺",
-      "kiymetPrimi": "250,00 ₺",
-      "tcddNavlun": "103.990,00 ₺",
-      "tcddFaturaTutari": "104.000,00 ₺",
-      "tcddFaturaKontrol": "-103.886,00 ₺"
-    },
-    "toplamlar": {
-      "adet": "8",
-      "net": "172,820",
-      "brut": "172,900"
-    },
-    "entries": [
+    "paketler": [
       {
-        "parti": "78758-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.68,
-        "brut": 21.69
+        "parti": "2100139-7",
+        "ebat": "0,50 x 1230",
+        "net": 5.91,
+        "brut": 5.99
       },
       {
-        "parti": "78762-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.62,
-        "brut": 21.63
-      },
-      {
-        "parti": "78761-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.6,
-        "brut": 21.61
-      },
-      {
-        "parti": "78718-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.64,
-        "brut": 21.65
-      },
-      {
-        "parti": "78711-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.38,
-        "brut": 21.39
-      },
-      {
-        "parti": "78713-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.64,
-        "brut": 21.65
-      },
-      {
-        "parti": "78720-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.64,
-        "brut": 21.65
-      },
-      {
-        "parti": "78710-1",
-        "ebat": "3,30 x 1115",
-        "net": 21.62,
-        "brut": 21.63
+        "parti": "8106414-1",
+        "ebat": "0,50 x 1357",
+        "net": 10.6,
+        "brut": 10.69
       }
-    ]
-  },
-  {
-    "id": 1744902237471,
-    "ship": "MV SAMSUN",
-    "ozetbeyanNo": "IM25789456",
-    "firma": "ERBOSAN",
-    "altBirim": "ALIMSATIM",
-    "arac": {
-      "cinsi": "VAGON",
-      "tipi": "Ks",
-      "numarasi": "21753301002-1"
+    ],
+    "status": {
+      "sevkDurumu": "ÇIKIŞ",
+      "durumTarihi": "2025-05-27T20:42:06.935Z",
+      "cikisTarihi": "2025-05-27T20:42:06.935Z"
     },
-    "sofor": {
-      "adSoyad": "",
-      "iletisim": "",
-      "tasiyiciFirma": ""
-    },
-    "tirFatura": {
-      "kantar": "",
-      "karayoluFiyat": "",
-      "kdvOran": "",
-      "karayoluKdv": "0,00 ₺",
-      "tevkifat": "0,00 ₺",
-      "karayoluNavlun": "0,00 ₺",
-      "karayoluFatura": "",
-      "karayoluKontrol": "0,00 ₺"
-    },
-    "vagonFatura": {
-      "tcddFiyat": "600,00 ₺",
-      "kiymetPrimi": "250,00 ₺",
-      "tcddNavlun": "3.190,00 ₺",
-      "tcddFaturaTutari": "4.000,00 ₺",
-      "tcddFaturaKontrol": "-3.186,00 ₺"
-    },
-    "toplamlar": {
-      "adet": "1",
-      "net": "4,830",
-      "brut": "4,900"
-    },
-    "entries": [
-      {
-        "parti": "2162554-5",
-        "ebat": "0,70 x 1480",
-        "net": 4.83,
-        "brut": 4.9
-      }
-    ]
+    "payment": {
+      "odemeDurumu": "BEKLİYOR",
+      "odemeTarihi": "2025-05-27T20:42:06.935Z"
+    }
   }
 ]

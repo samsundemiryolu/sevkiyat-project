@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "name": "ERBOSAN",
+    "subunits": [
+      "ÜRETİM",
+      "ALIMSATIM",
+      "İTHALAT",
+      "TRANSİT",
+      "SICAK"
+    ]
+  },
+  {
+    "name": "MESTAŞ",
+    "subunits": [
+      "ABMESTAŞ"
+    ],
+    "id": "2"
+  },
+  {
+    "name": "INNOVA",
+    "subunits": [
+      "ABINNOVA"
+    ],
+    "id": "3"
+  },
+  {
+    "name": "SERSİM",
+    "subunits": [
+      "ABSERSİM"
+    ],
+    "id": "4"
+  },
+  {
+    "name": "BOYÇELİK",
+    "subunits": [
+      "ABBOYÇELİK"
+    ],
+    "id": "5"
+  }
+]
