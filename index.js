@@ -521,11 +521,12 @@ const firmRoutes = require("./routes/firmRoutes");
 app.use("/firms", firmRoutes);  // ✅ /api olmadan, direkt /firms
 
 module.exports = {
-  baseUrl: "http://localhost:3000" // veya dış IP/ngrok
+  baseUrl: process.env.BASE_URL || "http://localhost:3000"
 };
 
 
 // ====================================
-app.listen(PORT, () => {
-  console.log(`Sunucu ${PORT} portunda çalışıyor: http://localhost:${PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Sunucu ${PORT} portunda çalışıyor`);
 });
