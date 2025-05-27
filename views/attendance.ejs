@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Puantaj Girişleri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .projects-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    .employees-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #D98324;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+
+    .home-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+    .day-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .day-box.worked {
+      background-color: #a5d6a7; /* yeşil */
+    }
+    .day-box.double {
+      background-color: #ffcc80; /* turuncu */
+    }
+    .day-box.disabled {
+      background-color: #e0e0e0;
+      cursor: not-allowed;
+    }
+    /* Başlangıçta işaretlenmemiş (kırmızı) */
+    .unselected {
+      background-color: #f8d7da;
+    }
+  </style>
+</head>
+<body>
+  <h1>Puantaj Girişleri</h1>
+  <nav>
+    <a href="/index" class="home-button"><i class="fa-solid fa-house"></i> Anasayfa</a> |
+    <a href="/employees" class="employees-button"><i class="fa-solid fa-users"></i> Çalışanlar</a> |
+    <a href="/projects" class="projects-button"><i class="fa-solid fa-ship"></i> Projeler</a> |
+    <!-- İsterseniz puantaj raporları linki -->
+    <!-- <a href="/attendance/reports">Puantaj Raporları</a> -->
+  </nav>
+
+  <h2>Gün Seçimi</h2>
+  <!-- Yıl, Ay, Proje, Çalışan seçimleri -->
+  <form id="attendanceForm">
+    <label for="yearSelect">Yıl:</label>
+    <select id="yearSelect" name="year">
+      <% for(let y = 2020; y <= 2050; y++) { %>
+        <option value="<%= y %>"><%= y %></option>
+      <% } %>
+    </select>
+
+    <label for="monthSelect">Ay:</label>
+    <select id="monthSelect" name="month">
+      <% const months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]; %>
+      <% months.forEach((m, index) => { %>
+        <option value="<%= index %>"><%= m %></option>
+      <% }) %>
+    </select>
+
+    <label for="projectSelect">Proje:</label>
+    <select id="projectSelect" name="project">
+      <option value="">Seçiniz</option>
+      <% projects.forEach(proj => { 
+          // Örnek olarak bitiş tarihi dolmamış projeleri listeleyebiliriz:
+          // (Eğer bitiş tarihi boş ise de ekliyoruz)
+          if (proj.endDate && proj.endDate.trim() !== "") {
+            // eğer proje bitiş tarihi geçmişse listelemeyebiliriz, 
+            // ama isterseniz tüm projeleri de gösterebilirsiniz.
+          }
+      %>
+        <option value="<%= proj.projectName %>"
+                data-start-date="<%= proj.startDate %>"
+                data-end-date="<%= proj.endDate %>"><%= proj.projectName %></option>
+      <% }) %>
+    </select>
+
+    <label for="employeeSelect">Çalışan (TC Kimlik No):</label>
+    <select id="employeeSelect" name="employee">
+      <option value="">Seçiniz</option>
+      <% employees.forEach(emp => {
+          // SGK giriş çıkış durumuna göre kısıt getirebilirsiniz. 
+          // Örnek: SGK girişi var ve çıkış tarihi yoksa eklensin.
+          if (emp.sgkEntryDate && (!emp.sgkExitDate || emp.sgkExitDate.trim() === "")) {
+      %>
+        <option value="<%= emp.tcNumber %>">
+          <%= emp.name + " " + emp.surname %> (<%= emp.tcNumber %>)
+        </option>
+      <% } }) %>
+    </select>
+  </form>
+  <br>
+  <!-- Takvimi oluşturmak için bir buton -->
+  <button id="generateBtn" style="background-color:#205781;"><i class="fa-solid fa-calendar-days"></i> Takvimi Oluştur</button>
+
+  <h2>Takvim</h2>
+  <div id="calendarContainer" class="calendar"></div>
+
+  <h3>Toplam Çalışma Sayısı: <span id="totalWork">0</span></h3>
+
+  <!-- Kaydet butonu -->
+  <button id="saveButton" style="background-color:#1F7D53;"><i class="fa-regular fa-floppy-disk"></i>Kaydet</button>
+
+  <script>
+    const yearSelect = document.getElementById("yearSelect");
+    const monthSelect = document.getElementById("monthSelect");
+    const projectSelect = document.getElementById("projectSelect");
+    const employeeSelect = document.getElementById("employeeSelect");
+    const calendarContainer = document.getElementById("calendarContainer");
+    const totalWorkSpan = document.getElementById("totalWork");
+    const generateBtn = document.getElementById("generateBtn");
+    const saveButton = document.getElementById("saveButton");
+
+    // Takvimi oluştur
+    function generateCalendar() {
+      const year = parseInt(yearSelect.value);
+      const month = parseInt(monthSelect.value);
+      // Proje başlangıç ve bitiş tarihlerini al
+      const selectedProjectOption = projectSelect.options[projectSelect.selectedIndex];
+      const projectStartStr = selectedProjectOption.dataset.startDate || "";
+      const projectEndStr = selectedProjectOption.dataset.endDate || "";
+      const projectStartDate = projectStartStr ? new Date(projectStartStr) : null;
+      const projectEndDate = projectEndStr ? new Date(projectEndStr) : null;
+
+      calendarContainer.innerHTML = "";
+
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const totalDays = lastDay.getDate();
+
+      for (let day = 1; day <= totalDays; day++) {
+        const date = new Date(year, month, day);
+        const dayBox = document.createElement("div");
+        dayBox.className = "day-box unselected";
+        dayBox.textContent = day;
+        dayBox.dataset.day = day;       // Günü sakla
+        dayBox.dataset.workCount = 0;   // 0,1,2 (tıklama ile artacak)
+
+        // Proje bitmişse disable edebiliriz (opsiyonel)
+        if (projectEndDate && projectEndDate.toString() !== "Invalid Date") {
+          const now = new Date();
+          if (projectEndDate < now) {
+            dayBox.classList.add("disabled");
+          }
+        }
+        // Proje başlangıç tarihinden önceki günler de disabled
+        if (projectStartDate && date < projectStartDate) {
+          dayBox.classList.add("disabled");
+        }
+
+        // Tıklama
+        dayBox.addEventListener("click", () => toggleDay(dayBox));
+
+        calendarContainer.appendChild(dayBox);
+      }
+      totalWorkSpan.textContent = "0";
+    }
+
+    // Tıklama ile 0->1->2->0
+    function toggleDay(dayBox) {
+      if (dayBox.classList.contains("disabled")) return;
+
+      let workCount = parseInt(dayBox.dataset.workCount) || 0;
+      if (workCount === 0) {
+        workCount = 1;
+        dayBox.classList.add("worked");
+        dayBox.classList.remove("unselected", "double");
+        dayBox.style.backgroundColor = "#a5d6a7";
+      } else if (workCount === 1) {
+        workCount = 2;
+        dayBox.classList.add("double");
+        dayBox.style.backgroundColor = "#ffcc80";
+        dayBox.textContent = dayBox.textContent + " X2";
+      } else {
+        workCount = 0;
+        dayBox.classList.remove("worked", "double");
+        dayBox.classList.add("unselected");
+        dayBox.style.backgroundColor = "#f8d7da";
+        dayBox.textContent = dayBox.textContent.replace(" X2", "");
+      }
+      dayBox.dataset.workCount = workCount;
+      updateTotalWork();
+    }
+
+    // Toplam çalışmayı hesapla
+    function updateTotalWork() {
+      let total = 0;
+      const dayBoxes = document.querySelectorAll(".day-box");
+      dayBoxes.forEach(box => {
+        total += parseInt(box.dataset.workCount) || 0;
+      });
+      totalWorkSpan.textContent = total;
+    }
+
+    // "Takvimi Oluştur" butonuna tıklayınca
+    generateBtn.addEventListener("click", generateCalendar);
+
+    // Kaydet butonu
+    saveButton.addEventListener("click", () => {
+      const year = parseInt(yearSelect.value);
+      const month = parseInt(monthSelect.value);
+      const project = projectSelect.value;
+      const employee = employeeSelect.value;
+
+      if (!project || !employee) {
+        alert("Proje ve Çalışan seçimi zorunludur!");
+        return;
+      }
+
+      // Gün verilerini topla
+      const dayBoxes = document.querySelectorAll(".day-box");
+      const days = [];
+      dayBoxes.forEach(box => {
+        const dayNum = parseInt(box.dataset.day);
+        const count = parseInt(box.dataset.workCount);
+        if (count > 0) {
+          days.push({ day: dayNum, workCount: count });
+        }
+      });
+
+      const payload = {
+        year,
+        month,
+        project,
+        employee,
+        days
+      };
+
+      // POST isteği
+      fetch("/attendance/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Puantaj kaydedildi!");
+        } else {
+          alert("Kayıt hatası: " + data.message);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Sunucu hatası!");
+      });
+    });
+
+    // Sayfa ilk açıldığında varsayılan takvim oluşturmak isterseniz:
+    // generateCalendar();
+  </script>
+</body>
+</html>

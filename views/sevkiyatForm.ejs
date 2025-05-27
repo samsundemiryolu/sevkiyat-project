@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sevkiyat Formu</title>
+  <style>
+    body { font-family: Arial; margin:20px; }
+    .row { display:flex; gap:20px; margin-bottom:10px; }
+    .column { flex:1; }
+    label { display:block; font-weight:bold; margin-bottom:4px; }
+    select,input,button { width:100%; padding:6px; box-sizing:border-box; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; }
+    th,td { border:1px solid #ccc; padding:6px; text-align:center; }
+    .totals { margin-top:10px; }
+    .hidden { display:none; }
+    #tonajDurumu, #kalanTonaj {
+      text-align: center;
+      font-size: 1.25rem;
+      margin: 0.5em 0;
+      font-weight: 600;
+    }
+    #tonajDurumu {
+      font-size: 1.5rem;
+      color: #d35400;
+    }
+    #kalanTonaj {
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+    .ortak-checkbox {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25em;
+    }
+    .ortak-checkbox span {
+      color: red;
+      font-weight: 600;
+    }
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 9999;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+  <h2>Sevkiyat Formu</h2>
+
+  <div id="tonajDurumu">Tonaj Durumu: —</div>
+  <div id="kalanTonaj">Kalan Yüklenebilir Tonaj: —</div>
+
+  <form id="sevkiyatForm">
+    <div class="column">
+      <label class="ortak-checkbox">
+        <input type="checkbox" id="ortakCheckbox" />
+        <span>Ortak Yükleme</span>
+      </label>
+    </div>
+
+<h3>Araç Bilgileri</h3>
+  <div class="row">
+    <div class="column">
+      <label>Araç Cinsi</label>
+      <select id="aracCinsiSel">
+        <option value="">-- Seçiniz --</option>
+        <option value="TIR">TIR</option>
+        <option value="VAGON">VAGON</option>
+      </select>
+    </div>
+    <div class="column" id="aracNoBlock">
+      <label>Araç No</label>
+      <div style="display:flex;gap:8px">
+        <input
+<input type="text" id="aracNo"
+  pattern="[A-Za-z0-9ĞÜŞİÖÇğüşıöç\- ]*"
+  title="Harf, rakam, tire (-) ve boşluk kullanabilirsiniz."
+  inputmode="text" />
+        <button type="button" id="openVagonListBtn" class="hidden">Vagon Listesi</button>
+      </div>
+    </div>
+
+    <div class="column" id="aracTipiBlock">
+      <label>Araç Tipi</label>
+      <input type="text" id="aracTipi" readonly />
+    </div>
+  </div>
+  <!-- TIR Detayları -->
+  <div class="row">
+    <div class="column hidden" id="tirBlock1">
+      <label>Sürücü Ad Soyad</label>
+      <input
+  type="text"
+  id="surucu"
+  pattern="[A-Za-z0-9ĞÜŞİÖÇğüşiöç ]*"
+  title="Yalnızca harf, rakam ve boşluk kullanabilirsiniz."
+  inputmode="text"
+/>
+    </div>
+    <div class="column hidden" id="tirBlock2">
+      <label>İletişim</label>
+      <input
+  type="text"
+  id="iletisim"
+  pattern="[A-Za-z0-9ĞÜŞİÖÇğüşiöç ]*"
+  title="Yalnızca harf, rakam ve boşluk kullanabilirsiniz."
+  inputmode="text"
+/>
+    </div>
+    <div class="column hidden" id="tirBlock3">
+      <label>Taşıyıcı Firma</label>
+      <input
+  type="text"
+  id="tasiyiciFirma"
+  pattern="[A-Za-z0-9ĞÜŞİÖÇğüşiöç ]*"
+  title="Yalnızca harf, rakam ve boşluk kullanabilirsiniz."
+  inputmode="text"
+/>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="column">
+        <label>Gemi</label>
+        <select id="shipSel"><option>Yükleniyor...</option></select>
+      </div>
+      <div class="column">
+        <label>Firma</label>
+        <select id="firmaSel" disabled><option>Gemi seçin</option></select>
+      </div>
+      <div class="column">
+        <label>Alt Birim</label>
+        <select id="subSel" disabled><option>Firma seçin</option></select>
+      </div>
+      <div class="column">
+        <label>&nbsp;</label>
+        <button type="button" id="loadBtn" disabled>Yükleme Listesi</button>
+      </div>
+    </div>
+
+    <h3>Seçilen Paketler</h3>
+    <table id="entryTable">
+      <thead>
+        <tr><th>Parti</th><th>Ebat</th><th>Net</th><th>Brüt</th><th>Sil</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="totals">
+      Adet: <span id="totAdet">0</span>,
+      Net: <span id="totNet">0,000</span>,
+      Brüt: <span id="totBrut">0,000</span>
+    </div>
+  <h3 class="hidden" id="tirFaturaTitle">Navlun Hesapla (TIR)</h3>
+  <div class="hidden" id="tirFatura">
+    <div class="row">
+      <div class="column">
+        <label>Kantar</label>
+        <input type="number" id="kantar" oninput="hesaplaTir()">
+      </div>
+      <div class="column">
+        <label>Karayolu Fiyat</label>
+        <input type="number" id="karayoluFiyat" oninput="hesaplaTir()">
+      </div>
+      <div class="column">
+        <label>KDV %</label>
+        <input type="number" id="kdvOran" oninput="hesaplaTir()">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column"><label>Karayolu KDV</label><input readonly id="karayoluKdv"></div>
+      <div class="column"><label>Tevkifat</label><input readonly id="tevkifat"></div>
+      <div class="column"><label>Navlun</label><input readonly id="karayoluNavlun"></div>
+    </div>
+    <div class="row">
+      <div class="column"><label>Fatura Tutarı</label><input id="karayoluFatura" oninput="hesaplaTir()"></div>
+      <div class="column" style="flex:2"><label>Kontrol</label><input readonly id="karayoluKontrol"></div>
+    </div>
+  </div>
+
+  <h3 class="hidden" id="vagonFaturaTitle">Navlun Hesapla (Vagon)</h3>
+  <div class="hidden" id="vagonFatura">
+    <div class="row">
+      <div class="column"><label>TCDD Fiyat</label><input type="number" id="tcddFiyat" oninput="hesaplaVagon()"></div>
+      <div class="column"><label>Kıymet Primi</label><input type="number" id="kiymetPrimi" oninput="hesaplaVagon()"></div>
+      <div class="column"><label>Navlun</label><input readonly id="tcddNavlun"></div>
+    </div>
+    <div class="row">
+      <div class="column"><label>Fatura Tutarı</label><input id="tcddFaturaTutari" oninput="hesaplaVagon()"></div>
+      <div class="column" style="flex:2"><label>Kontrol</label><input readonly id="tcddFaturaKontrol"></div>
+    </div>
+  </div>
+
+    <div style="margin-top:20px">
+      <button type="submit" id="saveBtn">💾 Kaydet</button>
+    </div>
+
+<div id="vagonModal" class="modal hidden">
+  <h3>Vagon Listesi</h3>
+  <input type="text" id="vagonSearch" placeholder="Ara (no, tip)...">
+  <table>
+    <thead>
+      <tr><th>No</th><th>Tip</th><th>Seç</th></tr>
+    </thead>
+    <tbody id="vagonTableBody"></tbody>
+  </table>
+  <button type="button" id="closeVagonListBtn" class="kapat-btn">Kapat</button>
+</div>
+  </form>
+  <script>
+    const baseUrl = "<%= baseUrl %>";
+  </script>
+  <script src="/js/sevkiyatForm.js"></script>
+</body>
+</html>

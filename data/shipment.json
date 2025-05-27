@@ -1,0 +1,533 @@
+[
+  {
+    "id": 1744896969808,
+    "ship": "MV SAMSUN",
+    "ozetbeyanNo": "IM25789456",
+    "firma": "ERBOSAN",
+    "altBirim": "ÜRETİM",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753302541-7"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "",
+      "tevkifat": "",
+      "karayoluNavlun": "",
+      "karayoluFatura": "",
+      "karayoluKontrol": ""
+    },
+    "vagonFatura": {
+      "tcddFiyat": "",
+      "kiymetPrimi": "",
+      "tcddNavlun": "",
+      "tcddFaturaTutari": "",
+      "tcddFaturaKontrol": ""
+    },
+    "toplamlar": {
+      "adet": "2",
+      "net": "31,720",
+      "brut": "31,740"
+    },
+    "entries": [
+      {
+        "parti": "7097-1",
+        "ebat": "5,00 x 1500",
+        "net": 14.93,
+        "brut": 14.94
+      },
+      {
+        "parti": "7102-1",
+        "ebat": "5,00 x 1500",
+        "net": 16.79,
+        "brut": 16.8
+      }
+    ]
+  },
+  {
+    "id": 1744897392202,
+    "ship": "MV SAMSUN",
+    "ozetbeyanNo": "IM25789456",
+    "firma": "ERBOSAN",
+    "altBirim": "ÜRETİM",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753301330-6"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "",
+      "tevkifat": "",
+      "karayoluNavlun": "",
+      "karayoluFatura": "",
+      "karayoluKontrol": ""
+    },
+    "vagonFatura": {
+      "tcddFiyat": "",
+      "kiymetPrimi": "",
+      "tcddNavlun": "",
+      "tcddFaturaTutari": "",
+      "tcddFaturaKontrol": ""
+    },
+    "toplamlar": {
+      "adet": "2",
+      "net": "30,540",
+      "brut": "30,560"
+    },
+    "entries": [
+      {
+        "parti": "8456-1",
+        "ebat": "3,00 x 1500",
+        "net": 15.3,
+        "brut": 15.31
+      },
+      {
+        "parti": "7235-1",
+        "ebat": "4,00 x 1500",
+        "net": 15.24,
+        "brut": 15.25
+      }
+    ]
+  },
+  {
+    "id": 1744900789815,
+    "ship": "MV SAMSUN",
+    "ozetbeyanNo": "IM25789456",
+    "firma": "ERBOSAN",
+    "altBirim": "ALIMSATIM",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Sgss",
+      "numarasi": "31754568002-5"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "",
+      "tevkifat": "",
+      "karayoluNavlun": "",
+      "karayoluFatura": "",
+      "karayoluKontrol": ""
+    },
+    "vagonFatura": {
+      "tcddFiyat": "",
+      "kiymetPrimi": "",
+      "tcddNavlun": "",
+      "tcddFaturaTutari": "",
+      "tcddFaturaKontrol": ""
+    },
+    "toplamlar": {
+      "adet": "3",
+      "net": "18,070",
+      "brut": "18,280"
+    },
+    "entries": [
+      {
+        "parti": "8207538-2",
+        "ebat": "0,65 x 1250",
+        "net": 6,
+        "brut": 6.07
+      },
+      {
+        "parti": "8207538-3",
+        "ebat": "0,65 x 1250",
+        "net": 6.12,
+        "brut": 6.19
+      },
+      {
+        "parti": "8207538-4",
+        "ebat": "0,65 x 1250",
+        "net": 5.95,
+        "brut": 6.02
+      }
+    ]
+  },
+  {
+    "id": 1744901402872,
+    "ship": "MV ATAK",
+    "ozetbeyanNo": "IM252358",
+    "firma": "İNNOVA",
+    "altBirim": "ABİNNOVA",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753301569-9"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "0,00 ₺",
+      "tevkifat": "0,00 ₺",
+      "karayoluNavlun": "0,00 ₺",
+      "karayoluFatura": "",
+      "karayoluKontrol": "0,00 ₺"
+    },
+    "vagonFatura": {
+      "tcddFiyat": "600,00 ₺",
+      "kiymetPrimi": "250,00 ₺",
+      "tcddNavlun": "26.350,00 ₺",
+      "tcddFaturaTutari": "27.000,00 ₺",
+      "tcddFaturaKontrol": "-26.323,00 ₺"
+    },
+    "toplamlar": {
+      "adet": "2",
+      "net": "43,480",
+      "brut": "43,500"
+    },
+    "entries": [
+      {
+        "parti": "78714-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.64,
+        "brut": 21.65
+      },
+      {
+        "parti": "75780-1",
+        "ebat": "3,70 x 1375",
+        "net": 21.84,
+        "brut": 21.85
+      }
+    ]
+  },
+  {
+    "id": 1744901646550,
+    "ship": "MV ATAK",
+    "ozetbeyanNo": "IM252358",
+    "firma": "İNNOVA",
+    "altBirim": "ABİNNOVA",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753302541-7"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "",
+      "tevkifat": "",
+      "karayoluNavlun": "",
+      "karayoluFatura": "",
+      "karayoluKontrol": ""
+    },
+    "vagonFatura": {
+      "tcddFiyat": "",
+      "kiymetPrimi": "",
+      "tcddNavlun": "",
+      "tcddFaturaTutari": "",
+      "tcddFaturaKontrol": ""
+    },
+    "toplamlar": {
+      "adet": "3",
+      "net": "64,470",
+      "brut": "64,500"
+    },
+    "entries": [
+      {
+        "parti": "78715-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.51,
+        "brut": 21.52
+      },
+      {
+        "parti": "79063-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.48,
+        "brut": 21.49
+      },
+      {
+        "parti": "79065-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.48,
+        "brut": 21.49
+      }
+    ]
+  },
+  {
+    "id": 1744901822491,
+    "ship": "MV ATAK",
+    "ozetbeyanNo": "IM252358",
+    "firma": "İNNOVA",
+    "altBirim": "ABİNNOVA",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753300001-4"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "0,00 ₺",
+      "tevkifat": "0,00 ₺",
+      "karayoluNavlun": "0,00 ₺",
+      "karayoluFatura": "",
+      "karayoluKontrol": "0,00 ₺"
+    },
+    "vagonFatura": {
+      "tcddFiyat": "600,00 ₺",
+      "kiymetPrimi": "250,00 ₺",
+      "tcddNavlun": "38.956,00 ₺",
+      "tcddFaturaTutari": "39.000,00 ₺",
+      "tcddFaturaKontrol": "-38.917,00 ₺"
+    },
+    "toplamlar": {
+      "adet": "3",
+      "net": "64,480",
+      "brut": "64,510"
+    },
+    "entries": [
+      {
+        "parti": "79062-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.48,
+        "brut": 21.49
+      },
+      {
+        "parti": "79064-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.5,
+        "brut": 21.51
+      },
+      {
+        "parti": "79281-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.5,
+        "brut": 21.51
+      }
+    ]
+  },
+  {
+    "id": 1744901990572,
+    "ship": "MV ATAK",
+    "ozetbeyanNo": "IM252358",
+    "firma": "İNNOVA",
+    "altBirim": "ABİNNOVA",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753301224-1"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "",
+      "tevkifat": "",
+      "karayoluNavlun": "",
+      "karayoluFatura": "",
+      "karayoluKontrol": ""
+    },
+    "vagonFatura": {
+      "tcddFiyat": "",
+      "kiymetPrimi": "",
+      "tcddNavlun": "",
+      "tcddFaturaTutari": "",
+      "tcddFaturaKontrol": ""
+    },
+    "toplamlar": {
+      "adet": "3",
+      "net": "64,670",
+      "brut": "64,700"
+    },
+    "entries": [
+      {
+        "parti": "79282-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.52,
+        "brut": 21.53
+      },
+      {
+        "parti": "78760-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.55,
+        "brut": 21.56
+      },
+      {
+        "parti": "78759-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.6,
+        "brut": 21.61
+      }
+    ]
+  },
+  {
+    "id": 1744902055348,
+    "ship": "MV ATAK",
+    "ozetbeyanNo": "IM252358",
+    "firma": "İNNOVA",
+    "altBirim": "ABİNNOVA",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753300002-2"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "0,00 ₺",
+      "tevkifat": "0,00 ₺",
+      "karayoluNavlun": "0,00 ₺",
+      "karayoluFatura": "",
+      "karayoluKontrol": "0,00 ₺"
+    },
+    "vagonFatura": {
+      "tcddFiyat": "600,00 ₺",
+      "kiymetPrimi": "250,00 ₺",
+      "tcddNavlun": "103.990,00 ₺",
+      "tcddFaturaTutari": "104.000,00 ₺",
+      "tcddFaturaKontrol": "-103.886,00 ₺"
+    },
+    "toplamlar": {
+      "adet": "8",
+      "net": "172,820",
+      "brut": "172,900"
+    },
+    "entries": [
+      {
+        "parti": "78758-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.68,
+        "brut": 21.69
+      },
+      {
+        "parti": "78762-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.62,
+        "brut": 21.63
+      },
+      {
+        "parti": "78761-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.6,
+        "brut": 21.61
+      },
+      {
+        "parti": "78718-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.64,
+        "brut": 21.65
+      },
+      {
+        "parti": "78711-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.38,
+        "brut": 21.39
+      },
+      {
+        "parti": "78713-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.64,
+        "brut": 21.65
+      },
+      {
+        "parti": "78720-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.64,
+        "brut": 21.65
+      },
+      {
+        "parti": "78710-1",
+        "ebat": "3,30 x 1115",
+        "net": 21.62,
+        "brut": 21.63
+      }
+    ]
+  },
+  {
+    "id": 1744902237471,
+    "ship": "MV SAMSUN",
+    "ozetbeyanNo": "IM25789456",
+    "firma": "ERBOSAN",
+    "altBirim": "ALIMSATIM",
+    "arac": {
+      "cinsi": "VAGON",
+      "tipi": "Ks",
+      "numarasi": "21753301002-1"
+    },
+    "sofor": {
+      "adSoyad": "",
+      "iletisim": "",
+      "tasiyiciFirma": ""
+    },
+    "tirFatura": {
+      "kantar": "",
+      "karayoluFiyat": "",
+      "kdvOran": "",
+      "karayoluKdv": "0,00 ₺",
+      "tevkifat": "0,00 ₺",
+      "karayoluNavlun": "0,00 ₺",
+      "karayoluFatura": "",
+      "karayoluKontrol": "0,00 ₺"
+    },
+    "vagonFatura": {
+      "tcddFiyat": "600,00 ₺",
+      "kiymetPrimi": "250,00 ₺",
+      "tcddNavlun": "3.190,00 ₺",
+      "tcddFaturaTutari": "4.000,00 ₺",
+      "tcddFaturaKontrol": "-3.186,00 ₺"
+    },
+    "toplamlar": {
+      "adet": "1",
+      "net": "4,830",
+      "brut": "4,900"
+    },
+    "entries": [
+      {
+        "parti": "2162554-5",
+        "ebat": "0,70 x 1480",
+        "net": 4.83,
+        "brut": 4.9
+      }
+    ]
+  }
+]

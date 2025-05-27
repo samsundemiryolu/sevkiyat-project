@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Puantaj Raporları</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .edit-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .employees-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #D98324;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+    .home-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+    .projects-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #5F99AE;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    .attendanceEntry-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #FFB433;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      padding: 6px;
+      text-align: center;
+    }
+    input, select {
+      margin-right: 10px;
+    }
+    tfoot tr td {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Puantaj Raporları</h1>
+  <nav>
+    <a href="/index" class="home-button"><i class="fa-solid fa-house"></i> Anasayfa</a> |
+    <a href="/employees" class="employees-button"><i class="fa-solid fa-users"></i> Çalışanlar</a> |
+    <a href="/projects" class="projects-button"><i class="fa-solid fa-ship"></i> Projeler</a> |
+    <a href="/attendance" class="attendanceEntry-button"><i class="fa-solid fa-calendar-days"></i>Puantaj Girişleri</a>
+  </nav>
+  <div style="margin-bottom: 1rem;">
+    <label>Yıl:</label>
+    <select id="reportYear">
+      <option value="">Tümü</option>
+      <% for(let y = 2020; y <= 2050; y++) { %>
+        <option value="<%= y %>"><%= y %></option>
+      <% } %>
+    </select>
+    <label>Ay:</label>
+    <select id="reportMonth">
+      <option value="">Tümü</option>
+      <% const months = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"]; %>
+      <% months.forEach((m, i) => { %>
+        <option value="<%= i %>"><%= m %></option>
+      <% }) %>
+    </select>
+    <label>Proje:</label>
+    <select id="reportProject">
+      <option value="">Tümü</option>
+      <% projects.forEach(p => { %>
+        <option value="<%= p.projectName %>"><%= p.projectName %></option>
+      <% }) %>
+    </select>
+    <label>Çalışan:</label>
+    <input type="text" id="employeeSearch" placeholder="Ad, Soyad veya TC">
+    <label>Tarih Başlangıç:</label>
+    <input type="date" id="reportStartDate">
+    <label>Tarih Bitiş:</label>
+    <input type="date" id="reportEndDate">
+    <button onclick="clearFilters()"><i class="fa-solid fa-arrows-rotate"></i>Filtre Temizle</button>
+  </div>
+  <h2>Rapor Sonuçları</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Yıl</th>
+        <th>Ay</th>
+        <th>Proje</th>
+        <th>Çalışan (TC)</th>
+        <th>Toplam Gün</th>
+        <th>Puantajı Aç</th>
+      </tr>
+    </thead>
+    <tbody id="reportTableBody"></tbody>
+    <tfoot id="reportTableFooter"></tfoot>
+  </table>
+
+  <script>
+    const reportYear = document.getElementById("reportYear");
+    const reportMonth = document.getElementById("reportMonth");
+    const reportProject = document.getElementById("reportProject");
+    const employeeSearch = document.getElementById("employeeSearch");
+    const reportStartDate = document.getElementById("reportStartDate");
+    const reportEndDate = document.getElementById("reportEndDate");
+    const reportTableBody = document.getElementById("reportTableBody");
+    const reportTableFooter = document.getElementById("reportTableFooter");
+
+    function fetchReports() {
+      const params = new URLSearchParams({
+        year: reportYear.value,
+        month: reportMonth.value,
+        project: reportProject.value,
+        employeeSearch: employeeSearch.value,
+        startDate: reportStartDate.value,
+        endDate: reportEndDate.value
+      });
+      fetch("/attendance/reports/data?" + params.toString())
+        .then(res => res.json())
+        .then(data => {
+          reportTableBody.innerHTML = "";
+          let grandTotal = 0;
+          data.forEach(rec => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${rec.year}</td>
+              <td>${rec.monthName}</td>
+              <td>${rec.project}</td>
+              <td>${rec.employeeName}</td>
+              <td>${rec.totalDays}</td>
+              <td><a href="/attendance/entry?recordId=${rec.id}" class="edit-button"><i class="fa-solid fa-pen-to-square"></i>Puantajı Aç</a></td>
+            `;
+            reportTableBody.appendChild(row);
+            grandTotal += rec.totalDays;
+          });
+          reportTableFooter.innerHTML = `
+            <tr>
+              <td colspan="4" style="text-align:right;">Genel Toplam:</td>
+              <td colspan="2">${grandTotal}</td>
+            </tr>
+          `;
+        })
+        .catch(err => console.error("Rapor yükleme hatası:", err));
+    }
+
+    function clearFilters() {
+      reportYear.value = "";
+      reportMonth.value = "";
+      reportProject.value = "";
+      employeeSearch.value = "";
+      reportStartDate.value = "";
+      reportEndDate.value = "";
+      fetchReports();
+    }
+
+    // Dinamik filtreleme: input ve selectlerde değişiklikte tetikleme
+    [reportYear, reportMonth, reportProject, employeeSearch, reportStartDate, reportEndDate].forEach(el => {
+      el.addEventListener("input", fetchReports);
+    });
+
+    // İlk başta tabloyu boş bırak
+    reportTableBody.innerHTML = "<tr><td colspan='6'>Filtre seçimi yapınız...</td></tr>";
+  </script>
+</body>
+</html>

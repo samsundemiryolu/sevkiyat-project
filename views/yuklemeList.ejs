@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yükleme Listesi</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+    input { width: 100%; box-sizing: border-box; padding: 4px; }
+  </style>
+</head>
+<body>
+  <h2>Yükleme Listesi</h2>
+  <div id="summary" style="margin-bottom: 10px;">
+    <strong>Adet:</strong> <span id="totalCount">0</span>,
+    <strong>Toplam Net:</strong> <span id="totalNet">0</span> kg,
+    <strong>Toplam Brüt:</strong> <span id="totalBrut">0</span> kg
+  </div>
+  <input type="text" id="filterInput" placeholder="Ara (parti/ebat)..." />
+  <table>
+    <thead>
+      <tr><th>Parti</th><th>Ebat</th><th>Net</th><th>Brüt</th><th>Seç</th></tr>
+    </thead>
+    <tbody id="tblBody"></tbody>
+  </table>
+<script>
+  const baseUrl = "<%= baseUrl %>";
+</script>
+
+<script src="/js/yuklemeList.js"></script></body>
+</html>

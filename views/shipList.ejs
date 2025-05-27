@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gemi Listesi</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Tanımlı Gemiler</h1>
+
+  <a href="/ships/new">+ Yeni Gemi Tanımla</a>
+  <p style="margin-bottom: 10px;">
+  <a href="/" style="text-decoration: none; font-weight: bold;">🏠 Anasayfa</a>
+</p>
+  <br><br>
+
+  <% if (ships.length === 0) { %>
+    <p>Henüz kayıtlı gemi yok.</p>
+  <% } else { %>
+    <table border="1" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Özet Beyan No</th>
+          <th>Gemi Adı</th>
+          <th>Geliş Tarihi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% ships.forEach(ship => { %>
+          <tr>
+            <td><%= ship.summaryNumber %></td>
+            <td><%= ship.name %></td>
+            <td><%= ship.arrivalDate %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</body>
+</html>

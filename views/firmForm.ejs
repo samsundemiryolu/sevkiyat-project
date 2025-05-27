@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Firma Tanımlama</title>
+<style>
+  #firmForm {
+    display: none;
+  }
+  #firmForm.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <h2>🏢 Firma Tanımlama</h2>
+  <form id="firmForm" class="active">
+
+    <label for="name">Firma Adı:</label>
+    <input type="text" id="name" required><br><br>
+
+    <label for="subunitInput">Alt Birim:</label>
+    <input type="text" id="subunitInput">
+    <button type="button" onclick="addSubunit()">Ekle</button>
+    <ul id="subunitList"></ul><br>
+
+    <button type="submit">Kaydet</button>
+  </form>
+  <hr>
+  <h3>📋 Kayıtlı Firmalar</h3>
+  <table id="firmTable" border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Firma Adı</th>
+        <th>Alt Birimler</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <br>
+<button onclick="goHome()">🏠 Ana Sayfa</button>
+  <script>
+    const baseUrl = "<%= baseUrl %>";
+  </script>
+<script src="/js/firm.js"></script>
+</body>
+</html>

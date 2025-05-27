@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Araç Tanımlama</title>
+</head>
+<body>
+  <h2>🚛 Araç Tanımlama Formu</h2>
+
+  <form id="vehicleForm">
+    <label for="id">Araç ID:</label>
+    <input type="text" id="id" required><br><br>
+
+    <label for="vehicleClass">Sınıf:</label>
+    <input type="text" id="vehicleClass" required><br><br>
+
+    <label for="vehicleType">Tip:</label>
+    <input type="text" id="vehicleType" required><br><br>
+
+    <label for="minTon">Min Ton:</label>
+    <input type="text" id="minTon" required><br><br>
+
+    <label for="maxTon">Max Ton:</label>
+    <input type="text" id="maxTon" required><br><br>
+
+    <button type="submit">Kaydet</button>
+  </form>
+
+  <hr>
+  <h3>📋 Kayıtlı Araçlar</h3>
+<table id="vehicleTable" border="1">
+  <thead>
+    <tr>
+      <th>Plaka/ID</th>
+      <th>Sınıf</th>
+      <th>Tip</th>
+      <th>Min Ton</th>
+      <th>Max Ton</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+  const baseUrl = "<%= baseUrl %>";
+</script>
+
+  <script src="/js/vehicleForm.js"></script>
+</body>
+</html>

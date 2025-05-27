@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Puantaj Kayıt Detayı</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .projects-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    .employees-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #D98324;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+    .attendancereport-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #FFB433;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+
+    .home-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+    .save-button {
+      background-color: #3A7D44;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+    .day-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    .day-box.worked { background-color: #a5d6a7; }
+    .day-box.double { background-color: #ffcc80; }
+    .day-box.disabled { background-color: #e0e0e0; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <h1>Puantaj Kayıt Detayı</h1>
+  <nav>
+    <a href="/index" class="home-button"><i class="fa-solid fa-house"></i> Anasayfa</a> |
+    <a href="/employees" class="employees-button"><i class="fa-solid fa-users"></i> Çalışanlar</a> |
+    <a href="/projects" class="projects-button"><i class="fa-solid fa-ship"></i> Projeler</a> |
+    <a href="/attendance/reports" class="attendancereport-button"><i class="fa-solid fa-id-card"></i>Puantaj Raporları</a>
+  </nav>
+
+  <div id="recordInfo"></div>
+  <div id="calendarContainer"></div>
+  <h3>Toplam Çalışma Sayısı: <span id="totalWork">0</span></h3>
+  <button id="saveBtn" class="save-button"><i class="fa-regular fa-floppy-disk"></i>Kaydet</button>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const recordId = urlParams.get("recordId");
+    const recordInfoDiv = document.getElementById("recordInfo");
+    const calendarContainer = document.getElementById("calendarContainer");
+    const totalWorkSpan = document.getElementById("totalWork");
+    const saveBtn = document.getElementById("saveBtn");
+
+    let attendanceRecord = null;
+    let readOnly = false;
+
+    fetch("/attendance/entry/data?recordId=" + recordId)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) {
+          recordInfoDiv.innerHTML = "Kayıt bulunamadı veya hata: " + data.message;
+          return;
+        }
+        attendanceRecord = data.record;
+        readOnly = data.readOnly;
+
+        recordInfoDiv.innerHTML = `
+          <p><strong>Yıl:</strong> ${attendanceRecord.year}, <strong>Ay:</strong> ${attendanceRecord.monthName}<br><br>
+          <strong>Proje:</strong> ${attendanceRecord.project},<br><br>
+	  <strong>Çalışan:</strong> <p style="color: red;">${attendanceRecord.employeeName || attendanceRecord.employee}</p>
+          <p style="color: red;">${readOnly ? "Bu kayıt salt okunur!" : ""}</p>
+        `;
+        generateCalendar();
+      })
+      .catch(err => {
+        console.error(err);
+        recordInfoDiv.innerHTML = "Sunucu hatası!";
+      });
+
+    function generateCalendar() {
+      calendarContainer.innerHTML = "";
+      calendarContainer.className = "calendar";
+
+      const { year, month, days } = attendanceRecord;
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const totalDays = lastDay.getDate();
+
+      for (let d = 1; d <= totalDays; d++) {
+        const box = document.createElement("div");
+        box.className = "day-box";
+        box.textContent = d;
+        box.dataset.day = d;
+        box.dataset.workCount = 0;
+
+        const dayData = days.find(x => x.day === d);
+        if (dayData) {
+          box.dataset.workCount = dayData.workCount;
+          if (dayData.workCount === 1) {
+            box.classList.add("worked");
+            box.style.backgroundColor = "#a5d6a7";
+          } else if (dayData.workCount === 2) {
+            box.classList.add("double");
+            box.style.backgroundColor = "#ffcc80";
+            box.textContent += " X2";
+          }
+        }
+
+        if (!readOnly) {
+          box.addEventListener("click", () => toggleDay(box));
+        } else {
+          box.classList.add("disabled");
+        }
+
+        calendarContainer.appendChild(box);
+      }
+      updateTotalWork();
+    }
+
+    function toggleDay(box) {
+      if (box.classList.contains("disabled")) return;
+      let count = parseInt(box.dataset.workCount) || 0;
+      if (count === 0) {
+        count = 1;
+        box.classList.add("worked");
+        box.style.backgroundColor = "#a5d6a7";
+      } else if (count === 1) {
+        count = 2;
+        box.classList.add("double");
+        box.style.backgroundColor = "#ffcc80";
+        box.textContent += " X2";
+      } else {
+        count = 0;
+        box.classList.remove("worked", "double");
+        box.style.backgroundColor = "";
+        box.textContent = box.textContent.replace(" X2", "");
+      }
+      box.dataset.workCount = count;
+      updateTotalWork();
+    }
+
+    function updateTotalWork() {
+      const boxes = document.querySelectorAll(".day-box");
+      let total = 0;
+      boxes.forEach(b => {
+        total += parseInt(b.dataset.workCount) || 0;
+      });
+      totalWorkSpan.textContent = total;
+    }
+
+    saveBtn.addEventListener("click", () => {
+      if (readOnly) {
+        alert("Kayıt salt okunur, değişiklik kaydedilemez!");
+        return;
+      }
+      // Kaydet
+      const boxes = document.querySelectorAll(".day-box");
+      const newDays = [];
+      boxes.forEach(b => {
+        const day = parseInt(b.dataset.day);
+        const wc = parseInt(b.dataset.workCount);
+        if (wc > 0) {
+          newDays.push({ day, workCount: wc });
+        }
+      });
+
+      const payload = {
+        recordId,
+        days: newDays
+      };
+      fetch("/attendance/entry/save", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Puantaj güncellendi!");
+        } else {
+          alert("Hata: " + data.message);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Sunucu hatası!");
+      });
+    });
+  </script>
+</body>
+</html>

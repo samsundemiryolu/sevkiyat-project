@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Çalışanlar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    /* Temel stiller – İsteğe bağlı: bu stilleri /css/style.css'e de taşıyabilirsiniz */
+    .filter-box {
+      margin-bottom: 1rem;
+    }
+    .filter-box label {
+      margin-right: 0.5rem;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      padding: 6px;
+    }
+    /* Yeşil buton stili */
+    .add-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #FFB200;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .edit-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .save-button {
+      background-color: #3A7D44;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .home-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Çalışanlar</h1>
+
+  <!-- Yeni Çalışan Ekle Butonu -->
+  <a href="/index" class="home-button"><i class="fa-solid fa-house"></i> Anasayfa</a> 
+  <a href="#" id="showFormBtn" class="add-button"><i class="fa-solid fa-user-plus"></i>Yeni Çalışan Ekle</a>
+
+  <!-- Çalışan Ekleme Formu (Başlangıçta gizli) -->
+  <div id="employeeFormContainer" style="display: none; border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+    <h3>Yeni Çalışan Ekle</h3>
+    <form id="newEmployeeForm" enctype="multipart/form-data">
+      <label for="name">Ad (zorunlu):</label><br>
+      <input type="text" name="name" id="name" required><br><br>
+      
+      <label for="surname">Soyad (zorunlu):</label><br>
+      <input type="text" name="surname" id="surname" required><br><br>
+      
+      <label for="tcNumber">TC Kimlik No (11 rakam):</label><br>
+      <input type="text" name="tcNumber" id="tcNumber" pattern="[0-9]{11}" required><br><br>
+      
+      <label for="birthDate">Doğum Tarihi (zorunlu):</label><br>
+      <input type="date" name="birthDate" id="birthDate" required><br><br>
+      
+      <label for="phone">İletişim No (11 rakam):</label><br>
+      <input type="text" name="phone" id="phone" pattern="[0-9]{11}" required><br><br>
+      
+      <label for="sgkEntryDate">SGK Giriş Tarihi (isteğe bağlı):</label><br>
+      <input type="date" name="sgkEntryDate" id="sgkEntryDate"><br><br>
+      
+      <label for="sgkExitDate">SGK Çıkış Tarihi (isteğe bağlı):</label><br>
+      <input type="date" name="sgkExitDate" id="sgkExitDate"><br><br>
+      
+      <label for="pdf">Giriş Bildirgesi (PDF, SGK giriş varsa zorunlu):</label><br>
+      <input type="file" name="pdf" id="pdf" accept=".pdf"><br><br>
+      
+      <label for="isgStartDate">ISG Başlama Tarihi (zorunlu):</label><br>
+      <input type="date" name="isgStartDate" id="isgStartDate" required><br><br>
+      
+      <label for="isgEndDate">ISG Bitiş Tarihi (zorunlu):</label><br>
+      <input type="date" name="isgEndDate" id="isgEndDate" required><br><br>
+      
+      <label for="ek2StartDate">Ek2 Başlama Tarihi (zorunlu):</label><br>
+      <input type="date" name="ek2StartDate" id="ek2StartDate" required><br><br>
+      
+      <label for="ek2EndDate">Ek2 Bitiş Tarihi (zorunlu):</label><br>
+      <input type="date" name="ek2EndDate" id="ek2EndDate" required><br><br>
+      
+      <label for="gbtStartDate">GBT Başlama Tarihi (isteğe bağlı):</label><br>
+      <input type="date" name="gbtStartDate" id="gbtStartDate"><br><br>
+      
+      <label for="gbtEndDate">GBT Bitiş Tarihi (isteğe bağlı):</label><br>
+      <input type="date" name="gbtEndDate" id="gbtEndDate"><br><br>
+      
+      <button type="submit" class="save-button"><i class="fa-regular fa-floppy-disk"></i> Kaydet</button>
+      <button type="button" id="cancelFormBtn" class="save-button" style="background-color:#E50046;"><i class="fa-solid fa-times"></i> İptal</button>
+    </form>
+  </div>
+
+  <!-- Filtreleme Alanı -->
+  <div class="filter-box">
+    <label for="searchName">Ad Soyad:</label>
+    <input type="text" id="searchName" name="searchName" placeholder="Ad veya Soyad" oninput="applyFilters()" />
+
+    <label for="searchTc">TC Kimlik No:</label>
+    <input type="text" id="searchTc" name="searchTc" placeholder="TC" oninput="applyFilters()" />
+
+    <label for="sgkStatus">SGK Durumu:</label>
+    <select id="sgkStatus" name="sgkStatus" onchange="applyFilters()">
+      <option value="">Tümü</option>
+      <option value="var">Var</option>
+      <option value="yok">Yok</option>
+    </select>
+
+    <label for="isgStatus">İSG Durumu:</label>
+    <select id="isgStatus" name="isgStatus" onchange="applyFilters()">
+      <option value="">Tümü</option>
+      <option value="var">Var</option>
+      <option value="yok">Yok</option>
+    </select>
+
+    <label for="ek2Status">EK2 Durumu:</label>
+    <select id="ek2Status" name="ek2Status" onchange="applyFilters()">
+      <option value="">Tümü</option>
+      <option value="var">Var</option>
+      <option value="yok">Yok</option>
+    </select>
+  </div>
+
+  <!-- Çalışanlar Tablosu -->
+  <table>
+    <thead>
+      <tr>
+        <th>Ad Soyad</th>
+        <th>TC Kimlik No</th>
+        <th>SGK Durumu</th>
+        <th>İSG Durumu</th>
+        <th>EK2 Durumu</th>
+        <th>İşlem</th>
+      </tr>
+    </thead>
+    <tbody id="employeeTableBody">
+      <% employees.forEach(emp => { %>
+        <tr>
+          <td><%= emp.name %> <%= emp.surname %></td>
+          <td><%= emp.tcNumber %></td>
+          <td><%= emp.sgkStatus %></td>
+          <td><%= emp.isgStatus %></td>
+          <td><%= emp.ek2Status %></td>
+          <td><a href="/employees/<%= emp.tcNumber %>/edit" class="edit-button"><i class="fa-solid fa-pen-to-square"></i>Düzenle</a></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  
+  <!-- JavaScript: Formun Toggle Edilmesi, AJAX ile Yeni Çalışan Kaydı ve Dinamik Filtreleme -->
+  <script>
+    // Yeni Çalışan Ekle butonuna tıklanınca formu göster/gizle
+    document.getElementById("showFormBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      const container = document.getElementById("employeeFormContainer");
+      container.style.display = (container.style.display === "none" || container.style.display === "") ? "block" : "none";
+    });
+
+    // İptal butonu formu gizler
+    document.getElementById("cancelFormBtn").addEventListener("click", function() {
+      document.getElementById("employeeFormContainer").style.display = "none";
+    });
+
+    // AJAX ile yeni çalışan kaydı
+    document.getElementById("newEmployeeForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      try {
+        const response = await fetch("/employees", {
+          method: "POST",
+          body: formData
+        });
+        const result = await response.json();
+        alert(result.message);
+        if (result.success) {
+          form.reset();
+          document.getElementById("employeeFormContainer").style.display = "none";
+          applyFilters();
+        }
+      } catch (err) {
+        console.error("Hata:", err);
+        alert("Bir hata oluştu.");
+      }
+    });
+
+    // Dinamik Filtreleme Fonksiyonu
+    function applyFilters() {
+      const searchName = document.getElementById("searchName").value.trim();
+      const searchTc = document.getElementById("searchTc").value.trim();
+      const sgkStatus = document.getElementById("sgkStatus").value;
+      const isgStatus = document.getElementById("isgStatus").value;
+      const ek2Status = document.getElementById("ek2Status").value;
+
+      const url = `/employees/filter?searchName=${encodeURIComponent(searchName)}&searchTc=${encodeURIComponent(searchTc)}&sgkStatus=${sgkStatus}&isgStatus=${isgStatus}&ek2Status=${ek2Status}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.getElementById("employeeTableBody");
+          tableBody.innerHTML = "";
+          data.forEach(emp => {
+            const row = `
+              <tr>
+                <td>${emp.name} ${emp.surname}</td>
+                <td>${emp.tcNumber}</td>
+                <td>${emp.sgkStatus}</td>
+                <td>${emp.isgStatus}</td>
+                <td>${emp.ek2Status}</td>
+                <td><a href="/employees/${emp.tcNumber}/edit" class="edit-button"><i class="fa-solid fa-pen-to-square"></i>Düzenle</a></td>
+              </tr>
+            `;
+            tableBody.innerHTML += row;
+          });
+        })
+        .catch(err => console.error("Filtreleme hatası:", err));
+    }
+
+    // Sayfa yüklendiğinde çalışanları listele
+    applyFilters();
+  </script>
+</body>
+</html>

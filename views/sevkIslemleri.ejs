@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sevk İşlemleri</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .filters { margin-bottom: 12px; }
+    .filters select,
+    .filters input { margin-right: 8px; padding: 4px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #ccc; padding: 6px; text-align: center; }
+    th { background: #f0f0f0; }
+    button { padding: 4px 8px; }
+    input[type="date"] { width: 120px; }
+  </style>
+</head>
+<body>
+<button onclick="goHome()">🏠 Ana Sayfa</button>
+  <h2>Sevk İşlemleri</h2>
+
+  <div class="filters">
+    <select id="filterShip">— Gemi Filtrele —</select>
+    <select id="filterFirma">— Firma Filtrele —</select>
+    <select id="filterSubUnit">— Alt Birim Filtrele —</select>
+    <input type="text" id="filterAracNo" placeholder="Araç No ile ara…">
+    <datalist id="aracNoList"></datalist>
+  </div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Gemi</th>
+      <th>Firma</th>
+      <th>Alt Birim</th>
+      <th>Araç No</th>
+      <th>Araç Tipi</th>
+      <th>Sevk Durumu</th>
+      <th>Tarih</th>
+      <th>İşlem</th>
+      <th>Ödeme Durumu</th>
+      <th>İşlem</th>
+      <th>KaydaGit</th> 
+    </tr>
+  </thead>
+  <tbody id="shipmentsTbody">
+    <!-- Buraya JS’le satırlar eklenecek -->
+  </tbody>
+</table>
+
+<script>
+    const baseUrl = "<%= baseUrl %>";
+  </script>
+  <script src="/js/sevk.js"></script>
+</body>
+</html>

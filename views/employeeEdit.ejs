@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Çalışan Düzenleme</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    /* Basit stil örneği, isteğe bağlı olarak /css/style.css'e ekleyebilirsiniz */
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form { max-width: 500px; }
+    label { display: block; margin-top: 10px; }
+    input[type="text"],
+    input[type="date"],
+    input[type="file"] { width: 100%; padding: 5px; }
+    .message { background-color: #c8e6c9; padding: 10px; margin-bottom: 10px; }
+    .error { background-color: #ffcdd2; padding: 10px; margin-bottom: 10px; }
+    button { margin-top: 15px; padding: 8px 12px; }
+
+    .save-button {
+      background-color: #3A7D44;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .employees-button {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #D98324;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Çalışan Düzenleme Formu</h1>
+  
+  <!-- Mesajlar -->
+  <% if (message) { %>
+    <div class="message"><%= message %></div>
+  <% } %>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
+
+  <form id="editEmployeeForm" action="/employees/<%= employee.tcNumber %>/edit" method="post" enctype="multipart/form-data">
+    <label for="name">Ad (Salt Okunur):</label>
+    <input type="text" id="name" name="name" value="<%= employee.name %>" readonly>
+
+    <label for="surname">Soyad (Salt Okunur):</label>
+    <input type="text" id="surname" name="surname" value="<%= employee.surname %>" readonly>
+
+    <label for="tcNumber">TC Kimlik No (Salt Okunur):</label>
+    <input type="text" id="tcNumber" name="tcNumber" value="<%= employee.tcNumber %>" readonly>
+
+    <label for="birthDate">Doğum Tarihi (Salt Okunur):</label>
+    <input type="date" id="birthDate" name="birthDate" value="<%= employee.birthDate %>" readonly>
+
+    <label for="phone">İletişim No (11 rakam, düzenlenebilir):</label>
+    <input type="text" id="phone" name="phone" value="<%= employee.phone %>" pattern="[0-9]{11}" required>
+
+    <label for="sgkEntryDate">SGK Giriş Tarihi:</label>
+    <input type="date" id="sgkEntryDate" name="sgkEntryDate" value="<%= employee.sgkEntryDate || '' %>">
+
+    <label for="sgkExitDate">SGK Çıkış Tarihi:</label>
+    <input type="date" id="sgkExitDate" name="sgkExitDate" value="<%= employee.sgkExitDate || '' %>">
+
+    <label for="pdf">Giriş Bildirgesi (PDF, SGK giriş girilmiş ve çıkış boşsa zorunlu):</label>
+    <input type="file" id="pdf" name="pdf" accept=".pdf">
+
+    <label for="isgStartDate">İSG Başlama Tarihi:</label>
+    <input type="date" id="isgStartDate" name="isgStartDate" value="<%= employee.isgStartDate %>" required>
+
+    <label for="isgEndDate">İSG Bitiş Tarihi:</label>
+    <input type="date" id="isgEndDate" name="isgEndDate" value="<%= employee.isgEndDate %>" required>
+
+    <label for="ek2StartDate">EK2 Başlama Tarihi:</label>
+    <input type="date" id="ek2StartDate" name="ek2StartDate" value="<%= employee.ek2StartDate %>" required>
+
+    <label for="ek2EndDate">EK2 Bitiş Tarihi:</label>
+    <input type="date" id="ek2EndDate" name="ek2EndDate" value="<%= employee.ek2EndDate %>" required>
+
+    <label for="gbtStartDate">GBT Başlama Tarihi (isteğe bağlı):</label>
+    <input type="date" id="gbtStartDate" name="gbtStartDate" value="<%= employee.gbtStartDate || '' %>">
+
+    <label for="gbtEndDate">GBT Bitiş Tarihi (isteğe bağlı):</label>
+    <input type="date" id="gbtEndDate" name="gbtEndDate" value="<%= employee.gbtEndDate || '' %>">
+
+    <button type="submit" class="save-button"><i class="fa-regular fa-floppy-disk"></i> Kaydet</button>
+  </form>
+  <br>
+  <a href="/employees" class="employees-button"><i class="fa-solid fa-rotate-left"></i> Çalışanlar</a>
+</body>
+</html>
