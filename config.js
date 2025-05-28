@@ -1,15 +1,13 @@
-const path = require('path');
-const isLocal = process.env.NODE_ENV !== 'production';
+const path = require("path");
 
-// Ortak JSON dizini tanımı
-const dataDirectory = isLocal
-  ? path.join(__dirname, "data")           // Electron için
-  : "/app/data";                           // Railway için
+const dataDirectory = path.join(__dirname, "data");
 
 module.exports = {
-  baseUrl: isLocal
-    ? "http://localhost:3000"
-    : "https://sevkiyat-project.up.railway.app",
+  baseUrl:
+    process.env.BASE_URL ||
+    (process.env.NODE_ENV === "production"
+      ? "https://sevkiyat-project.up.railway.app"
+      : "http://localhost:3000"),
   dataPath: dataDirectory,
   paths: {
     ships: path.join(dataDirectory, "ships.json"),
