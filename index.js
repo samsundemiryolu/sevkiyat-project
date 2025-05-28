@@ -523,6 +523,9 @@ module.exports = {
   baseUrl: process.env.BASE_URL || "http://localhost:3000"
 };
 
+app.get("/", (req, res) => {
+  res.send("Sevkiyat sistemi yayında 🚚");
+});
 
 // ====================================
 const PORT = process.env.PORT || 3000;
