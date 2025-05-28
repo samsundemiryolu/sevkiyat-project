@@ -4,17 +4,31 @@ const fileUpload = require("express-fileupload");
 const pdfParse = require("pdf-parse");
 const path = require("path");
 const fs = require("fs");
+const config = require("./config");
 
 const app = express();
 
 // Middleware
+// index.js (middleware kısmı)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
+
+// önce public’e bak
 app.use(express.static(path.join(__dirname, "public")));
 
+// sonra data klasörüne de izin ver
+app.use("/data", express.static(path.join(__dirname, "data")));
+
+// view engine ayarları
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ success: false, message: err.message });
+});
+
 
 
 // ====================================
@@ -518,6 +532,11 @@ app.use("/sevk", sevkRoutes);
 
 const firmRoutes = require("./routes/firmRoutes");
 app.use("/firms", firmRoutes);  // ✅ /api olmadan, direkt /firms
+app.get("/firms/list", (req, res) => {
+  const firms = readJSON(config.paths.firms);
+  res.json(firms);
+});
+
 
 module.exports = {
   baseUrl: process.env.BASE_URL || "http://localhost:3000"

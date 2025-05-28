@@ -1,13 +1,12 @@
-const path = require("path");
+const path = require('path');
+const isLocal = process.env.NODE_ENV !== "production";
 
-const dataDirectory = path.join(__dirname, "data");
+const dataDirectory = isLocal
+  ? path.join(__dirname, "data")              // Geliştirme (lokal)
+  : "/app/data";                              // Railway ortamı (Linux tabanlı container)
 
 module.exports = {
-  baseUrl:
-    process.env.BASE_URL ||
-    (process.env.NODE_ENV === "production"
-      ? "https://sevkiyat-project.up.railway.app"
-      : "http://localhost:3000"),
+  baseUrl: isLocal ? "http://localhost:3000" : "https://sevkiyat-project.up.railway.app",
   dataPath: dataDirectory,
   paths: {
     ships: path.join(dataDirectory, "ships.json"),
@@ -16,6 +15,6 @@ module.exports = {
     shipment: path.join(dataDirectory, "shipment.json"),
     vehicles: path.join(dataDirectory, "vehicles.json"),
     erbosan: path.join(dataDirectory, "erbosan.json"),
-    odeme: path.join(dataDirectory, "odeme.json")
+    odeme: path.join(dataDirectory, "odeme.json"),
   }
 };
